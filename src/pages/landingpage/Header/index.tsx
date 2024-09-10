@@ -1,34 +1,39 @@
-// import { Fade } from "react-awesome-reveal"
 import { Box, Typography } from "@mui/material"
 import { styled } from "@mui/system"
 
 import { FadeInUp } from "@/components/Animation"
 import Button from "@/components/Button"
+import useCheckViewport from "@/hooks/useCheckViewport"
 
 const Container = styled(Box)(({ theme }) => ({
   display: "flex",
-  justifyContent: "center",
   alignItems: "center",
   flexDirection: "column",
-  paddingTop: "11rem",
-  paddingBottom: "6.6rem",
+  paddingTop: "4.8%",
+  height: "calc(100vh - 6.5rem)",
+  gap: "3.2rem",
+  background: "url(/imgs/homepage/landing-bg.webp) center / cover no-repeat",
   [theme.breakpoints.down("md")]: {
-    padding: "6.8rem 2rem 10rem",
+    height: "100vw",
+  },
+  [theme.breakpoints.down("sm")]: {
+    paddingTop: "7.2rem",
+    background: "none",
+    gap: "2.4rem",
+    height: "auto",
   },
 }))
 
 const Title = styled(Typography)(({ theme }) => ({
-  marginBottom: "2.4rem",
+  fontSize: "6.4rem",
+  lineHeight: "8.8rem",
+  fontWeight: 600,
+  width: "61rem",
+  textAlign: "center",
   [theme.breakpoints.down("md")]: {
-    marginBottom: "2rem",
-    textAlign: "center",
-  },
-}))
-
-const SubTitle = styled(Typography)(({ theme }) => ({
-  marginBottom: "4rem",
-  [theme.breakpoints.down("md")]: {
-    marginBottom: "4rem",
+    fontSize: "4rem",
+    lineHeight: "5.6rem",
+    marginBottom: "0.4rem",
   },
 }))
 
@@ -42,26 +47,36 @@ const ButtonContainer = styled(Box)(({ theme }) => ({
 }))
 
 const Header = () => {
+  const { isMobile } = useCheckViewport()
   return (
-    <Container>
-      <FadeInUp duration={700} sx={{ display: "flex" }}>
-        <Title variant="H1" data-aos="fade-up">
-          Ethereum, Extended.
-        </Title>
-
-        <SubTitle variant="Body1" textAlign="center">
-          Scroll is the leading zero-knowledge rollup. Scaling Ethereum for good.
-        </SubTitle>
-        <ButtonContainer>
-          <Button href="/bridge" color="primary">
-            Bridge into Scroll
-          </Button>
-          <Button target="_blank" href="https://docs.scroll.io/en/home/">
-            Start building
-          </Button>
-        </ButtonContainer>
-      </FadeInUp>
-    </Container>
+    <>
+      <Container>
+        <FadeInUp duration={700} sx={{ display: "flex" }}>
+          <Title data-aos="fade-up">
+            {isMobile ? (
+              <>
+                Homepage of the<br></br> Multichain World
+              </>
+            ) : (
+              <>
+                The Homepage of the<br></br> Multichain World
+              </>
+            )}
+          </Title>
+          <ButtonContainer>
+            <Button sx={{ backgroundColor: "#FFF8F3 !important" }} href="/bridge" color="primary">
+              Bridge into Scroll
+            </Button>
+            <Button sx={{ backgroundColor: "#FFF8F3 !important" }} target="_blank" href="https://docs.scroll.io/en/home/">
+              Start building
+            </Button>
+          </ButtonContainer>
+        </FadeInUp>
+      </Container>
+      {isMobile && (
+        <Box sx={{ width: "100%", height: "27.8rem", background: "url(/imgs/homepage/landing-bg-mobile.webp) center / cover no-repeat" }}></Box>
+      )}
+    </>
   )
 }
 

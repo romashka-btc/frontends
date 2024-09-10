@@ -1,9 +1,8 @@
 import { Box, Typography } from "@mui/material"
 import { styled } from "@mui/system"
 
-import FeatureIcon1 from "@/assets/images/home/feature_icon_1.png"
-import FeatureIcon3 from "@/assets/images/home/feature_icon_3.png"
-import FeatureIcon4 from "@/assets/images/home/feature_icon_4.png"
+import FeatureImage1 from "@/assets/images/home/feature-img-1.webp"
+import FeatureImage2 from "@/assets/images/home/feature-img-2.webp"
 import { FadeInUp, SlideInLeft, SlideInRight } from "@/components/Animation"
 import SectionWrapper from "@/components/SectionWrapper"
 import WebpImage from "@/components/WebpImage"
@@ -11,22 +10,14 @@ import useCheckViewport from "@/hooks/useCheckViewport"
 
 const FEATURES = [
   {
-    icon: FeatureIcon1,
-    title: "By builders, for builders.",
-    description:
-      "Scroll is designed from the ground-up to maximize compatibility with Ethereum Virtual Machine. Thanks to bytecode-level compatibility with EVM, your existing applications and favorite tools are compatible with Scroll out-of-the-box. Being the most popular virtual machine for blockchains, EVM enables new developers to easily pick up Solidity or Vyper through countless tutorials, open-source code, and online communities.",
+    icon: FeatureImage1,
+    title: "Build",
+    description: "EVM compatibility enables builders to smoothly deploy their existing application on Scroll using their favorite tools.",
   },
   {
-    icon: FeatureIcon4,
-    title: "Open-source and transparent.",
-    description:
-      "Since day one, Scroll has been built in the open by our core team and many others within the Ethereum community. Open-source building has empowered us to embrace the best ideas of the vast Ethereum community and to ensure that we have many eyes on the code to improve its security.",
-  },
-  {
-    icon: FeatureIcon3,
-    title: "Security above everything else.",
-    description:
-      "Scroll utilizes battle-tested code and rigorous audits to ensure the utmost security of the protocol. We are constantly improving our practices to harden the protocol’s infrastructure through all available means.",
+    icon: FeatureImage2,
+    title: "Expand",
+    description: "Scroll SDK makes the process of launching Satellite Chain seamless. Own your blockspace, we’ll take care of the rest.",
   },
 ]
 
@@ -34,46 +25,48 @@ const FeatureBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  gap: "10rem",
-  paddingBottom: "16rem",
-  "&:nth-of-type(odd)": {
+  gap: "12rem",
+  paddingTop: "6.4rem",
+  "&:nth-of-type(even)": {
     flexDirection: "row-reverse",
   },
   [theme.breakpoints.down("md")]: {
-    flexDirection: "column !important",
+    flexDirection: "column-reverse !important",
     alignItems: "flex-start",
-    paddingBottom: "10rem",
-    gap: "6rem",
-    "& *": {
-      textAlign: "center!important",
+    paddingTop: "3.2rem",
+    gap: "0.8rem",
+    "&:nth-of-type(odd)": {
+      textAlign: "right",
+      alignItems: "flex-end",
     },
   },
+
   [theme.breakpoints.up("xl")]: {
     paddingBottom: "20rem",
     gap: "20rem",
   },
 }))
 
-const FeatureIcon = styled(WebpImage)(({ theme }) => ({
+const FeatureImg = styled(WebpImage)(({ theme }) => ({
   width: "100%",
   display: "inline-block",
   [theme.breakpoints.up("md")]: {
-    maxWidth: "47.4rem",
+    maxWidth: "52rem",
   },
   [theme.breakpoints.down("md")]: {
     width: "60%",
   },
   [theme.breakpoints.down("sm")]: {
-    width: "80%",
+    width: "32rem",
   },
 }))
 
 const FeatureTitle = styled(Typography)(({ theme }) => ({
-  textAlign: "left",
-  marginBottom: "1.5rem",
+  // textAlign: "left",
+  marginBottom: "2.4rem",
   [theme.breakpoints.down("md")]: {
     marginBottom: "0.8rem",
-    textAlign: "center",
+    // textAlign: "center",
   },
 }))
 
@@ -86,16 +79,15 @@ const FeatureTextBox = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down("md")]: {
     width: "100%",
-    textAlign: "center",
+    // textAlign: "center",
+  },
+  [theme.breakpoints.down("sm")]: {
+    width: "32rem",
   },
 }))
 
-const Spacer = styled(Box)(({ theme }) => ({
-  height: "1.6rem",
-}))
-
 const FeatureDescription = styled(Typography)(({ theme }) => ({
-  textAlign: "left",
+  // textAlign: "left",
   [theme.breakpoints.down("sm")]: {
     fontSize: "1.6rem",
   },
@@ -122,7 +114,6 @@ const Feature = () => {
     return FEATURES.map((feature, featureIdx) => {
       return (
         <FeatureBox key={featureIdx}>
-          {ComponentToRender(featureIdx, 0, <FeatureIcon src={feature.icon} />)}
           {ComponentToRender(
             featureIdx,
             1,
@@ -131,14 +122,26 @@ const Feature = () => {
               <FeatureDescription variant="Body3">{feature.description}</FeatureDescription>
             </FeatureTextBox>,
           )}
+          {ComponentToRender(featureIdx, 0, <FeatureImg src={feature.icon} />)}
         </FeatureBox>
       )
     })
   }
 
   return (
-    <SectionWrapper>
-      <Spacer />
+    <SectionWrapper sx={{ py: ["4.4rem", "8.5rem"] }}>
+      <FadeInUp>
+        <Typography
+          sx={{
+            fontSize: ["2rem", "3.2rem"],
+            lineHeight: ["3.2rem", "4.8rem"],
+            textAlign: "center",
+          }}
+        >
+          Scroll is the leading zero-knowledge rollup. <br></br>
+          Scaling Ethereum for good.
+        </Typography>
+      </FadeInUp>
       {renderFeatures()}
     </SectionWrapper>
   )

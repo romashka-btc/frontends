@@ -172,7 +172,6 @@ const App = ({ currentMenu }) => {
         <SubMenuButton
           direction="row"
           alignItems="center"
-          // spacing="6px"
           dark={dark}
           className={currentMenu === item.key ? "active" : ""}
           onMouseEnter={e => handleMouseEnter(e, item.key)}
