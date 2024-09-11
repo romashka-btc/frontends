@@ -12,7 +12,7 @@ const Container = styled(Box)(({ theme }) => ({
   paddingTop: "4.8%",
   height: "calc(100vh - 6.5rem)",
   gap: "3.2rem",
-  background: "url(/imgs/homepage/landing-bg.webp) center / cover no-repeat",
+  background: "url(/imgs/homepage/landing-bg-1.webp) center / cover no-repeat",
   [theme.breakpoints.down("md")]: {
     height: "100vw",
   },
