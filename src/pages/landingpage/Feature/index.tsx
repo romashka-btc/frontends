@@ -30,6 +30,9 @@ const FeatureBox = styled(Box)(({ theme }) => ({
   "&:nth-of-type(even)": {
     flexDirection: "row-reverse",
   },
+  "&>*": {
+    // flex: 1,
+  },
   [theme.breakpoints.down("md")]: {
     flexDirection: "column-reverse !important",
     alignItems: "flex-start",
@@ -94,7 +97,7 @@ const FeatureDescription = styled(Typography)(({ theme }) => ({
 }))
 
 const Feature = () => {
-  const { isPortrait } = useCheckViewport()
+  const { isPortrait, isMobile } = useCheckViewport()
 
   const ComponentToRender = (featureIdx, elementIdx, children) => {
     if (isPortrait) {
@@ -138,7 +141,7 @@ const Feature = () => {
             textAlign: "center",
           }}
         >
-          Scroll is the leading zero-knowledge rollup. <br></br>
+          Scroll is the leading zero-knowledge rollup. {!isMobile && <br></br>}
           Scaling Ethereum for good.
         </Typography>
       </FadeInUp>
