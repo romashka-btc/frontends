@@ -80,11 +80,11 @@ const Header = () => {
           <Typography
             sx={{
               fontSize: ["2rem", "2.6rem"],
+              lineHeight: "normal",
               textAlign: ["center", "left"],
             }}
           >
-            Join our team of diverse and talented researchers, engineers, experts and community champions who are passionate about creating the best
-            L2 Ethereum ecosystem.
+            Join a group of cryptography researchers, engineers, experts, and community champions to create the best L2 Ethereum ecosystem.
           </Typography>
         </OrientationToView>
         <OrientationToView delay={0.3} className={classes.actionGroup}>
