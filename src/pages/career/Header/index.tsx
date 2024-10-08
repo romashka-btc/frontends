@@ -19,8 +19,9 @@ const useStyles = makeStyles()(theme => ({
   root: {
     display: "grid",
     gridTemplateColumns: "repeat(2, min-content)",
-    rowGap: "2.5rem",
+    rowGap: "2.4rem",
     columnGap: "4rem",
+    paddingTop: "8.8rem !important",
     paddingBottom: "5.4rem",
     justifyContent: "space-between",
     [theme.breakpoints.down("lg")]: {
@@ -30,13 +31,15 @@ const useStyles = makeStyles()(theme => ({
       paddingBottom: "4rem",
     },
     [theme.breakpoints.down("sm")]: {
-      paddingTop: "7.3rem",
-      paddingBottom: "4rem",
+      paddingTop: "5rem",
+      paddingBottom: "2rem",
       justifyItems: "center",
     },
   },
   titleWrapper: {
-    gridRow: "span 2",
+    [theme.breakpoints.up("sm")]: {
+      gridRow: "span 2",
+    },
   },
   subTitleWrapper: {
     width: "68rem",
@@ -46,8 +49,10 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   actionGroup: {
-    marginTop: "3rem",
-    [theme.breakpoints.between("sm", "lg")]: {},
+    marginTop: "2.4rem",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 0,
+    },
   },
 }))
 
@@ -89,13 +94,10 @@ const Header = () => {
         </OrientationToView>
         <Box
           sx={{
-            borderRadius: "4rem 4rem 0 0",
-            height: ["20rem", "37.9rem"],
-            marginTop: "2rem",
-            gridColumn: "1 / -1",
-            width: "100%",
-            background: ["url(/imgs/career/career-bg.svg) center / contain no-repeat", "url(/imgs/career/career-bg.svg) right / contain no-repeat"],
-            backgroundSize: "cover",
+            width: ["100%", "55rem"],
+            aspectRatio: "5 / 4",
+            gridColumn: "-2 / -1",
+            background: "url(/imgs/career/career-header-bg.webp) center / contain no-repeat",
           }}
         ></Box>
       </SectionWrapper>

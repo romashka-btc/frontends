@@ -149,6 +149,10 @@ const App = ({ currentMenu }) => {
     setAnchorEl(null)
   }
 
+  const handleResetIsHover = () => {
+    setIsHover(false)
+  }
+
   const renderSubMenuList = children => {
     return children.map((section, idx) => (
       <SectionList key={idx} dark={dark}>
@@ -160,7 +164,7 @@ const App = ({ currentMenu }) => {
           // only show sub menu item when the href is set
           ?.filter(subItem => subItem.href)
           .map(subItem => (
-            <SubmenuLink key={subItem.label} {...subItem}></SubmenuLink>
+            <SubmenuLink key={subItem.label} {...subItem} onClick={handleResetIsHover}></SubmenuLink>
           ))}
       </SectionList>
     ))
@@ -239,7 +243,17 @@ const App = ({ currentMenu }) => {
   }
 
   return (
-    <StyledBox bgColor={navbarBg} dark={dark} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+    <StyledBox
+      bgColor={navbarBg}
+      dark={dark}
+      onMouseEnter={() => {
+        console.log("hover in")
+        setIsHover(true)
+      }}
+      onMouseLeave={e => {
+        setIsHover(false)
+      }}
+    >
       <Announcement />
       <Container>
         <HeaderContainer>

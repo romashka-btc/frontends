@@ -1,15 +1,16 @@
 import useSWR from "swr"
 
-import { Box, Stack, Typography } from "@mui/material"
+import { Box, Container, Stack, Typography } from "@mui/material"
 
 import { fetchEcosystemMetricsData } from "@/apis/ecosystem"
 import { fetchLastBatchIndexesUrl } from "@/apis/rollupscan"
-import SectionWrapper from "@/components/SectionWrapper"
+import useCheckViewport from "@/hooks/useCheckViewport"
 import { formatLargeNumber } from "@/utils"
 
 import Statistic from "./Statistic"
 
 const Header = () => {
+  const { isLandscape } = useCheckViewport()
   const { data, isLoading } = useSWR(fetchEcosystemMetricsData, () => scrollRequest(fetchEcosystemMetricsData), { refreshInterval: 18e4 })
 
   const { data: totalBatches, isLoading: isBatchesLoading } = useSWR(
@@ -22,8 +23,35 @@ const Header = () => {
   )
 
   return (
-    <>
-      <SectionWrapper sx={{ pt: "6.4rem" }}>
+    <Box
+      sx={[
+        {
+          position: "relative",
+          height: ["42.8rem", "72rem", "auto"],
+        },
+        theme => ({
+          [theme.breakpoints.up("md")]: {
+            background: "url(/imgs/ecosystem/ecosystem-bg.webp) bottom / cover no-repeat",
+            aspectRatio: "16 / 9",
+            marginTop: "-6.5rem",
+          },
+          [theme.breakpoints.down("md")]: {
+            background: "url(/imgs/ecosystem/ecosystem-bg-mobile.webp) bottom / contain no-repeat",
+          },
+        }),
+      ]}
+    >
+      {isLandscape && (
+        <Box>
+          <video style={{ width: "100vw", objectFit: "cover" }} autoPlay muted loop playsInline preload="none">
+            <source src="/videos/ecosystem-header-bg.mp4" type="video/mp4" />
+            <source src="/videos/ecosystem-header-bg-264.mp4" type="video/mp4" />
+            Not support video
+          </video>
+        </Box>
+      )}
+
+      <Container sx={{ position: "absolute", top: ["5.8rem", "5.8rem", "calc(5% + 6.5rem)"], left: "50%", transform: "translateX(-50%)", zIndex: 1 }}>
         <Stack direction="column" alignItems="center">
           <Typography
             sx={{ fontSize: ["3.6rem", "6.4rem"], lineHeight: ["5rem", "8.8rem"], fontWeight: 600, maxWidth: "66rem", textAlign: "center" }}
@@ -43,19 +71,8 @@ const Header = () => {
             </Statistic>
           </Stack>
         </Stack>
-      </SectionWrapper>
-      <Box
-        sx={{
-          height: ["42.6rem", "37rem", "24vw"],
-          background: [
-            "url(/imgs/ecosystem/new-ecosystem-bg-mobile.svg) center / cover no-repeat",
-            "url(/imgs/ecosystem/new-ecosystem-bg-tablet.svg) center / cover no-repeat",
-            "url(/imgs/ecosystem/new-ecosystem-bg.svg) center / cover no-repeat",
-          ],
-          backgroundSize: "cover",
-        }}
-      ></Box>
-    </>
+      </Container>
+    </Box>
   )
 }
 export default Header
