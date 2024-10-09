@@ -1,36 +1,14 @@
-import { Box, Typography } from "@mui/material"
+import { Box, Container, Stack, Typography } from "@mui/material"
 import { styled } from "@mui/system"
 
 import { FadeInUp } from "@/components/Animation"
 import Button from "@/components/Button"
 import useCheckViewport from "@/hooks/useCheckViewport"
 
-const Container = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  flexDirection: "column",
-  paddingTop: "calc(4.8% + 6.5rem)",
-  height: "calc(100vh)",
-  marginTop: "-6.5rem",
-  gap: "3.2rem",
-  background: "url(/imgs/homepage/landing-bg.webp) center / cover no-repeat",
-  [theme.breakpoints.down("md")]: {
-    height: "100vw",
-  },
-  [theme.breakpoints.down("sm")]: {
-    marginTop: 0,
-    paddingTop: "7.2rem",
-    background: "none",
-    gap: "2.4rem",
-    height: "auto",
-  },
-}))
-
 const Title = styled(Typography)(({ theme }) => ({
   fontSize: "6.4rem",
   lineHeight: "8.8rem",
   fontWeight: 600,
-  width: "61rem",
   textAlign: "center",
   [theme.breakpoints.down("md")]: {
     fontSize: "4rem",
@@ -49,34 +27,71 @@ const ButtonContainer = styled(Box)(({ theme }) => ({
 }))
 
 const Header = () => {
-  const { isMobile } = useCheckViewport()
+  const { isMobile, isLandscape } = useCheckViewport()
   return (
     <>
-      <Container>
-        <FadeInUp duration={700} sx={{ display: "flex" }}>
-          <Title data-aos="fade-up">
-            {isMobile ? (
-              <>
-                Homepage of the<br></br> Multichain World
-              </>
-            ) : (
-              <>
-                The Homepage of the<br></br> Multichain World
-              </>
-            )}
-          </Title>
-          <ButtonContainer>
-            <Button sx={{ backgroundColor: "#FFF8F3 !important" }} href="/bridge" color="primary">
-              Bridge into Scroll
-            </Button>
-            <Button sx={{ backgroundColor: "#FFF8F3 !important" }} target="_blank" href="https://docs.scroll.io/en/home/">
-              Start building
-            </Button>
-          </ButtonContainer>
-        </FadeInUp>
-      </Container>
-      {isMobile && (
-        <Box sx={{ width: "100%", height: "27.8rem", background: "url(/imgs/homepage/landing-bg-mobile.webp) center / cover no-repeat" }}></Box>
+      <Box
+        sx={[
+          {
+            position: "relative",
+          },
+          theme => ({
+            [theme.breakpoints.up("md")]: {
+              background: "url(/imgs/homepage/landing-bg.webp) center / cover no-repeat",
+              aspectRatio: "16 / 9",
+              marginTop: "-6.5rem",
+            },
+          }),
+        ]}
+      >
+        {isLandscape && (
+          <Box>
+            <video style={{ width: "100vw", objectFit: "cover" }} autoPlay muted loop playsInline preload="none">
+              <source src="/videos/home-header-bg.mp4" type="video/mp4" />
+              <source src="/videos/home-header-bg-264.mp4" type="video/mp4" />
+              Not support video
+            </video>
+          </Box>
+        )}
+        <Container
+          sx={theme => ({
+            [theme.breakpoints.down("md")]: { paddingTop: "7.2rem" },
+            [theme.breakpoints.up("md")]: {
+              position: "absolute",
+              top: ["7.2rem", "7.2rem", "calc(100vw * 0.05 + 6.5rem)"],
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 1,
+            },
+          })}
+        >
+          <FadeInUp duration={700} sx={{ display: "flex" }}>
+            <Stack direction="column" alignItems="center" gap={isMobile ? "2.4rem" : "3.2rem"}>
+              <Title data-aos="fade-up">
+                {isMobile ? (
+                  <>
+                    Homepage of the<br></br> Multichain World
+                  </>
+                ) : (
+                  <>
+                    The Homepage of the<br></br> Multichain World
+                  </>
+                )}
+              </Title>
+              <ButtonContainer>
+                <Button sx={{ backgroundColor: "#FFF8F3 !important" }} href="/bridge" color="primary">
+                  Bridge into Scroll
+                </Button>
+                <Button sx={{ backgroundColor: "#FFF8F3 !important" }} target="_blank" href="https://docs.scroll.io/en/home/">
+                  Start building
+                </Button>
+              </ButtonContainer>
+            </Stack>
+          </FadeInUp>
+        </Container>
+      </Box>
+      {!isLandscape && (
+        <Box sx={{ width: "100%", aspectRatio: "909/589", background: "url(/imgs/homepage/landing-bg-mobile.webp) center / cover no-repeat" }}></Box>
       )}
     </>
   )

@@ -247,7 +247,6 @@ const App = ({ currentMenu }) => {
       bgColor={navbarBg}
       dark={dark}
       onMouseEnter={() => {
-        console.log("hover in")
         setIsHover(true)
       }}
       onMouseLeave={e => {

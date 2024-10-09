@@ -9,7 +9,7 @@ import Data from "@/pages/blog/data.json"
 import BlogCard from "./Card"
 
 const StyledSwiper = styled(Swiper)(({ theme }) => ({
-  marginTop: "2.4rem",
+  marginTop: "4.4rem",
   "&.swiper": {
     paddingBottom: "5rem",
   },
@@ -23,6 +23,9 @@ const StyledSwiper = styled(Swiper)(({ theme }) => ({
   },
   "& .swiper-pagination-bullet-active": {
     backgroundColor: "#fff",
+  },
+  [theme.breakpoints.down("sm")]: {
+    marginTop: "2.4rem",
   },
 }))
 

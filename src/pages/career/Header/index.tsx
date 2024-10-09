@@ -9,11 +9,13 @@ import useCheckViewport from "@/hooks/useCheckViewport"
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    marginTop: "-6.5rem",
-    paddingTop: "6.5rem",
+    height: "calc(100vh - 6.5rem)",
     background: theme.palette.themeBackground.normal,
     "& > .MuiBox-root": {
       background: theme.palette.themeBackground.normal,
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "auto",
     },
   },
   root: {
@@ -21,7 +23,8 @@ const useStyles = makeStyles()(theme => ({
     gridTemplateColumns: "repeat(2, min-content)",
     rowGap: "2.4rem",
     columnGap: "4rem",
-    paddingTop: "8.8rem !important",
+    // paddingTop: "8.8rem !important",
+    paddingTop: "5% !important",
     paddingBottom: "5.4rem",
     justifyContent: "space-between",
     [theme.breakpoints.down("lg")]: {
@@ -80,7 +83,7 @@ const Header = () => {
           <Typography
             sx={{
               fontSize: ["2rem", "2.6rem"],
-              lineHeight: "normal",
+              lineHeight: 1.4,
               textAlign: ["center", "left"],
             }}
           >
