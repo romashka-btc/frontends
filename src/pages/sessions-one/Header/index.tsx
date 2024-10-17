@@ -112,7 +112,6 @@ const Header = () => {
         backgroundSize: "cover",
         position: "relative",
         textAlign: "center",
-        mb: "2.4rem",
         backgroundColor: "#f6fdfd",
       }}
     >
