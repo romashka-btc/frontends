@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
   flex: {
     marginTop: "4.8rem",
     display: "grid",
-    gridTemplateColumns: "repeat(2, 1fr)",
+    gridTemplateColumns: "repeat(3, 1fr)",
     gridGap: "3rem",
     [theme.breakpoints.down("md")]: {
       gridTemplateColumns: "100%",
@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   large: {
-    gridColumn: "span 2",
+    gridColumn: "span 3",
     [theme.breakpoints.down("md")]: {
       gridColumn: "span 1",
     },
