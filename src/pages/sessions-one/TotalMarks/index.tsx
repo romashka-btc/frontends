@@ -14,7 +14,7 @@ import useCheckViewport from "@/hooks/useCheckViewport"
 import useSessionsStore from "@/stores/sessionsStore"
 import { commafy, formatLargeNumber, sentryDebug } from "@/utils"
 
-const MARKS_FOR_TOKEN = 1_000
+const MARKS_FOR_TOKEN = 200
 
 const SESSION_EXPLANATION_LINK = "/blog/announcing-scrolls-largest-rewards-program-to-date"
 
