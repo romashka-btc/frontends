@@ -3,11 +3,10 @@ import { isNumber } from "lodash"
 import useSWR from "swr"
 import { makeStyles } from "tss-react/mui"
 
-import { Box, Divider, Skeleton, Stack, SvgIcon, Tooltip, Typography } from "@mui/material"
+import { Box, Divider, Skeleton, Stack, Tooltip, Typography } from "@mui/material"
 import { styled } from "@mui/material/styles"
 
 import { fetchCurrentWalletPointsUrl, fetchPastWalletPointsUrl } from "@/apis/sessions"
-import { ReactComponent as QaSvg } from "@/assets/svgs/sessions/qa.svg"
 import Button from "@/components/Button"
 import Link from "@/components/Link"
 import { useRainbowContext } from "@/contexts/RainbowProvider"
@@ -16,6 +15,8 @@ import useSessionsStore from "@/stores/sessionsStore"
 import { commafy, formatLargeNumber, sentryDebug } from "@/utils"
 
 const MARKS_FOR_TOKEN = 1_000
+
+const SESSION_EXPLANATION_LINK = "/blog/announcing-scrolls-largest-rewards-program-to-date"
 
 const useStyles = makeStyles()(theme => ({
   tooltip: {
@@ -153,42 +154,16 @@ const TotalPoints = () => {
             </Tooltip>
 
             <Typography sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}>
-              before October 19th, 2024
+              Cutoff time: Oct 19, 2024, 00:00 GMT
             </Typography>
-            {pastMarks < MARKS_FOR_TOKEN ? (
-              <Stack direction="row" alignItems="center" spacing="4px">
-                <Typography sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}>
-                  Not enough for token allocation
-                </Typography>
-                <Tooltip
-                  classes={{ tooltip: classes.notEnoughTooltip, arrow: classes.notEnoughArrow }}
-                  arrow
-                  title={
-                    <>
-                      The minimum Marks required for token allocation is xxx.{" "}
-                      <Link underline="always" sx={{ color: "inherit", fontSize: "inherit", fontWeight: 700 }}>
-                        Learn more
-                      </Link>
-                    </>
-                  }
-                >
-                  <SvgIcon component={QaSvg} sx={{ fontSize: "1.6rem" }} inheritViewBox></SvgIcon>
-                </Tooltip>
-              </Stack>
-            ) : (
-              <Link
-                underline="always"
-                sx={{
-                  fontSize: ["1.4rem", "1.6rem"],
-                  lineHeight: ["2rem", "2.4rem"],
-                  fontFamily: "var(--developer-page-font-family)",
-                  color: "text.primary",
-                  fontWeight: 400,
-                }}
-              >
-                What should I do next?
-              </Link>
-            )}
+            <Stack direction="row" alignItems="center" spacing="4px">
+              <Typography sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}>
+                {pastMarks < MARKS_FOR_TOKEN ? "Not eligible for Airdrop 1. " : "Eligible for Airdrop 1. "}
+                <Link underline="always" href={SESSION_EXPLANATION_LINK} sx={{ color: "inherit", fontSize: "inherit", fontWeight: 400 }}>
+                  Learn more
+                </Link>
+              </Typography>
+            </Stack>
           </Stack>
           <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem></Divider>
           <Stack direction="column" alignItems="center" spacing="0.8rem">
@@ -218,7 +193,10 @@ const TotalPoints = () => {
               Marks are updated every 24 hours
             </Typography>
             <Typography sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}>
-              Keep engaging to qualify for next round!
+              Keep engaging in this{" "}
+              <Link underline="always" href={SESSION_EXPLANATION_LINK} sx={{ color: "inherit", fontSize: "inherit", fontWeight: 400 }}>
+                new phase
+              </Link>
             </Typography>
           </Stack>
         </Stack>
