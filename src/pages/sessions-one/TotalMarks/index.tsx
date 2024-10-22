@@ -171,7 +171,7 @@ const TotalPoints = () => {
                     arrow
                     title={
                       <>
-                        Marks below the 200 threshold are carry over to Session 2.{" "}
+                        Marks below the 200 threshold are carried over to Session 2.{" "}
                         <Link
                           underline="always"
                           href={SESSION_AIRDROP_LINK}
