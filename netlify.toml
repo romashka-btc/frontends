@@ -89,8 +89,7 @@ force = true
 [[redirects]]
 from = "/airdrop-faq"
 to = "https://scroll-faqs.gitbook.io/faqs"
-status = 200
-force = true
+status = 301
 
 [[redirects]]
 from = "/*"
