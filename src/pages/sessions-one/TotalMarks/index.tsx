@@ -3,10 +3,11 @@ import { isNumber } from "lodash"
 import useSWR from "swr"
 import { makeStyles } from "tss-react/mui"
 
-import { Box, Divider, Skeleton, Stack, Tooltip, Typography } from "@mui/material"
+import { Box, Divider, Skeleton, Stack, SvgIcon, Tooltip, Typography } from "@mui/material"
 import { styled } from "@mui/material/styles"
 
 import { fetchCurrentWalletPointsUrl, fetchPastWalletPointsUrl } from "@/apis/sessions"
+import { ReactComponent as QaSvg } from "@/assets/svgs/sessions/qa.svg"
 import Button from "@/components/Button"
 import Link from "@/components/Link"
 import { useRainbowContext } from "@/contexts/RainbowProvider"
@@ -16,7 +17,8 @@ import { commafy, formatLargeNumber, sentryDebug } from "@/utils"
 
 const MARKS_FOR_TOKEN = 200
 
-const SESSION_EXPLANATION_LINK = "/blog/announcing-scrolls-largest-rewards-program-to-date"
+const SESSION_AIRDROP_LINK = "/blog/introducing-scrolls-first-airdrop-a-celebration-of-the-global-community"
+const SESSION_2_LINK = "/blog/announcing-scrolls-largest-rewards-program-to-date"
 
 const useStyles = makeStyles()(theme => ({
   tooltip: {
@@ -27,13 +29,13 @@ const useStyles = makeStyles()(theme => ({
     fontFamily: "var(--developer-page-font-family)",
   },
   notEnoughTooltip: {
-    background: "linear-gradient(180deg, #262626 0%, #111 100%)",
+    backgroundColor: "#111",
     padding: "1.6rem",
-    width: "24rem",
-    fontSize: "1.4rem",
-    lineHeight: "2rem",
-    marginTop: "1rem !important",
-    // fontFamily: "var(--developer-page-font-family)",
+    maxWidth: "35rem",
+    fontSize: "1.8rem",
+    lineHeight: "2.8rem",
+    borderRadius: "2rem",
+    fontWeight: 400,
   },
   notEnoughArrow: {
     color: "#111",
@@ -133,7 +135,7 @@ const TotalPoints = () => {
           sx={{ gap: ["3.2rem", "2.4rem"], textAlign: "center", width: "100%", justifyContent: "space-evenly" }}
         >
           <Stack direction="column" alignItems="center" spacing="0.8rem">
-            <Typography sx={{ fontSize: "1.8rem", lineHeight: "2.8rem", fontWeight: 600 }}>Past Marks</Typography>
+            <Typography sx={{ fontSize: "1.8rem", lineHeight: "2.8rem", fontWeight: 600 }}>Session 0 & 1 Marks</Typography>
 
             <Tooltip
               disableHoverListener={!pastMarks}
@@ -154,20 +156,52 @@ const TotalPoints = () => {
             </Tooltip>
 
             <Typography sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}>
-              Cutoff time: Oct 19, 2024, 00:00 GMT
+              Cutoff: Oct 19, 2024, 00:00 UTC
             </Typography>
             <Stack direction="row" alignItems="center" spacing="4px">
-              <Typography sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}>
-                {pastMarks < MARKS_FOR_TOKEN ? "Not eligible for Airdrop 1. " : "Eligible for Airdrop 1. "}
-                <Link underline="always" href={SESSION_EXPLANATION_LINK} sx={{ color: "inherit", fontSize: "inherit", fontWeight: 400 }}>
-                  Learn more
-                </Link>
-              </Typography>
+              {pastMarks < MARKS_FOR_TOKEN ? (
+                <>
+                  <Typography
+                    sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}
+                  >
+                    Marks carried over to Session 2
+                  </Typography>
+                  <Tooltip
+                    classes={{ tooltip: classes.notEnoughTooltip, arrow: classes.notEnoughArrow }}
+                    arrow
+                    title={
+                      <>
+                        Marks below the 200 threshold are carry over to Session 2.{" "}
+                        <Link
+                          underline="always"
+                          href={SESSION_AIRDROP_LINK}
+                          sx={{ color: "inherit", fontSize: "inherit", fontWeight: 400, whiteSpace: "nowrap" }}
+                        >
+                          Learn more
+                        </Link>
+                      </>
+                    }
+                  >
+                    <SvgIcon component={QaSvg} sx={{ fontSize: "1.6rem" }} inheritViewBox></SvgIcon>
+                  </Tooltip>
+                </>
+              ) : (
+                <>
+                  <Typography
+                    sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}
+                  >
+                    Check eligibility{" "}
+                    <Link underline="always" href={SESSION_AIRDROP_LINK} sx={{ color: "inherit", fontSize: "inherit", fontWeight: 400 }}>
+                      here
+                    </Link>
+                  </Typography>
+                </>
+              )}
             </Stack>
           </Stack>
           <Divider orientation={isMobile ? "horizontal" : "vertical"} flexItem></Divider>
           <Stack direction="column" alignItems="center" spacing="0.8rem">
-            <Typography sx={{ fontSize: "1.8rem", lineHeight: "2.8rem", fontWeight: 600 }}>Current Marks</Typography>
+            <Typography sx={{ fontSize: "1.8rem", lineHeight: "2.8rem", fontWeight: 600 }}>Session 2 Marks</Typography>
             <Tooltip
               disableHoverListener={!currentMarks}
               title={currentMarks ? commafy(currentMarks) : "--"}
@@ -194,7 +228,7 @@ const TotalPoints = () => {
             </Typography>
             <Typography sx={{ fontSize: ["1.4rem", "1.6rem"], lineHeight: ["2rem", "2.4rem"], fontFamily: "var(--developer-page-font-family)" }}>
               Keep engaging in this{" "}
-              <Link underline="always" href={SESSION_EXPLANATION_LINK} sx={{ color: "inherit", fontSize: "inherit", fontWeight: 400 }}>
+              <Link underline="always" href={SESSION_2_LINK} sx={{ color: "inherit", fontSize: "inherit", fontWeight: 400 }}>
                 new phase
               </Link>
             </Typography>
