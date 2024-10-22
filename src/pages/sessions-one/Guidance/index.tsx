@@ -10,7 +10,7 @@ const Guidance = () => {
       sx={{
         maxWidth: ["unset", "108rem !important"],
         display: "grid",
-        gridTemplateColumns: ["1fr", "1fr 1fr 1fr"],
+        gridTemplateColumns: ["1fr", "repeat(3, 1fr)"],
         gap: ["1.6rem", "2.4rem"],
       }}
     >

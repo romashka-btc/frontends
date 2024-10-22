@@ -15,11 +15,6 @@ const FadeInDiv = styled("div")<FadeInBoxProps>(({ theme, delay, backgroundurl, 
   animation: `${fadeIn} 1s ease-in-out ${delay ?? ""} forwards ${animation ? `, ${animation}` : ""}`,
   opacity: 0,
   position: "absolute",
-  // left: "0",
-  // right: "0",
-  // bottom: 0,
-  // width: "100%",
-  // height: "56.4vw",
   background: `url(${backgroundurl}) no-repeat center / cover`,
   ...style,
 }))
@@ -112,7 +107,6 @@ const Header = () => {
         backgroundSize: "cover",
         position: "relative",
         textAlign: "center",
-        mb: "2.4rem",
         backgroundColor: "#f6fdfd",
       }}
     >
