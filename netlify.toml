@@ -92,6 +92,11 @@ to = "https://scroll-faqs.gitbook.io/faqs"
 status = 301
 
 [[redirects]]
+from = "/gov-docs/*"
+to = "https://scroll-governance-documentation.vercel.app/:splat"
+status = 200
+
+[[redirects]]
 from = "/*"
 to = "/"
 status = 200
