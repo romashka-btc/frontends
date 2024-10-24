@@ -1,10 +1,9 @@
 import { ReactComponent as ContributeIcon } from "@/assets/svgs/community/contribute.svg"
 import { ReactComponent as DiscordIcon } from "@/assets/svgs/community/discord.svg"
-
-// import { ReactComponent as ForumIcon } from "@/assets/svgs/community/forum.svg"
+import { ReactComponent as ForumIcon } from "@/assets/svgs/community/forum.svg"
 
 export const DISCORD_LINK = "https://discord.gg/scroll"
-export const COMMUNITY_FORUM_LINK = "https://community.scroll.io/"
+export const COMMUNITY_FORUM_LINK = "https://gov.scroll.io/forum"
 export const CONTRIBUTE_TO_SCROLL_LINK = "https://github.com/scroll-tech/contribute-to-scroll"
 
 export const COMMUNITY_EXPLORER_LIST = [
@@ -14,12 +13,12 @@ export const COMMUNITY_EXPLORER_LIST = [
     title: "Join our Discord",
     content: "Connect with other Scroll developers and users",
   },
-  // {
-  //   icon: ForumIcon,
-  //   href: COMMUNITY_FORUM_LINK,
-  //   title: "Community Forum",
-  //   content: "Discuss and propose changes to Scroll",
-  // },
+  {
+    icon: ForumIcon,
+    href: COMMUNITY_FORUM_LINK,
+    title: "Governance Forum",
+    content: "Discuss and propose changes to Scroll",
+  },
   {
     icon: ContributeIcon,
     href: CONTRIBUTE_TO_SCROLL_LINK,

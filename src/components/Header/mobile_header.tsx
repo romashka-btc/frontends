@@ -148,7 +148,23 @@ const App = ({ currentMenu }) => {
               sx={{ py: "1rem" }}
               onClick={() => toggleCollapse(item.key)}
             >
-              {item.label} <ExpandMoreIcon fontSize="large" className={activeCollapse === item.key ? "active" : ""} />
+              <Stack direction="row" alignItems="center" spacing="0.8rem">
+                <span>{item.label} </span>
+                {item.new && (
+                  <Box
+                    sx={{
+                      backgroundColor: "#B5F5EC",
+                      padding: "0 0.8rem",
+                      height: "2rem",
+                      lineHeight: "2rem",
+                      borderRadius: "0.4rem",
+                    }}
+                  >
+                    <Typography sx={{ fontSize: "1.2rem", lineHeight: "2rem", fontWeight: 600 }}>NEW</Typography>
+                  </Box>
+                )}
+              </Stack>
+              <ExpandMoreIcon fontSize="large" className={activeCollapse === item.key ? "active" : ""} />
             </ListItem>
           ) : (
             <ListItem dark={dark} className={activeCollapse === item.key ? "active" : ""} sx={{ py: "1rem" }} onClick={() => toggleDrawer(false)}>

@@ -3,6 +3,8 @@ import { ReactComponent as CanvasAndBadgesSvg } from "@/assets/svgs/header/Canva
 import { ReactComponent as CommunitySvg } from "@/assets/svgs/header/Community.svg"
 import { ReactComponent as DocsSvg } from "@/assets/svgs/header/Doc.svg"
 import { ReactComponent as EthereumSvg } from "@/assets/svgs/header/Eth.svg"
+import { ReactComponent as ForumSvg } from "@/assets/svgs/header/Forum.svg"
+import { ReactComponent as HomeSvg } from "@/assets/svgs/header/Home.svg"
 import { ReactComponent as IssuesSvg } from "@/assets/svgs/header/Issues.svg"
 import { ReactComponent as LevelUpSvg } from "@/assets/svgs/header/LevelUp.svg"
 import { ReactComponent as ProjectsSvg } from "@/assets/svgs/header/Projects.svg"
@@ -218,6 +220,44 @@ const mainnetNavigations = [
             href: "/community",
             icon: CommunitySvg,
             reload: true,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Governance",
+    key: "governance",
+    new: true,
+    children: [
+      {
+        children: [
+          {
+            text: "Home",
+            label: "Get to know Scroll governance",
+            key: "governance-home",
+            rootKey: "governance",
+            href: "https://gov.scroll.io",
+            icon: HomeSvg,
+            isExternal: true,
+          },
+          {
+            text: "Documentations",
+            label: "Browse all the details about Scroll governance",
+            key: "governance-doc",
+            rootKey: "governance",
+            href: "https://gov.scroll.io/docs",
+            icon: DocsSvg,
+            isExternal: true,
+          },
+          {
+            text: "Forum",
+            label: "Participate in all the governance discussions",
+            key: "governance-forum",
+            rootKey: "governance",
+            href: "https://gov.scroll.io/forum",
+            icon: ForumSvg,
+            isExternal: true,
           },
         ],
       },

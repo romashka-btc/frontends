@@ -67,7 +67,7 @@ const SubmenuLinkContent = ({ icon, label, text, isExternal }: { icon: any; labe
       {icon && <SvgIcon sx={{ fontSize: "2.4rem" }} component={icon} inheritViewBox></SvgIcon>}
       <Box>
         {text && <Typography fontWeight={600}>{text}</Typography>}
-        <Typography>{label}</Typography>
+        <Typography sx={{ whiteSpace: ["pre-wrap", "nowrap"] }}>{label}</Typography>
       </Box>
       {isExternal && (
         <SvgIcon
