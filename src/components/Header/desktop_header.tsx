@@ -172,16 +172,21 @@ const App = ({ currentMenu }) => {
         <SubMenuButton
           direction="row"
           alignItems="center"
-          spacing="6px"
+          // spacing="6px"
           dark={dark}
           className={currentMenu === item.key ? "active" : ""}
           onMouseEnter={e => handleMouseEnter(e, item.key)}
           onMouseLeave={handleMouseLeave}
         >
           <span>{item.label}</span>
+          {item.new && (
+            <Box sx={{ backgroundColor: "#B5F5EC", padding: "0 0.8rem", height: "2rem", lineHeight: "2rem", borderRadius: "0.4rem", ml: "0.4rem" }}>
+              <Typography sx={{ fontSize: "1.2rem", lineHeight: "2rem", fontWeight: 600 }}>NEW</Typography>
+            </Box>
+          )}
           <SvgIcon
             className={cx("expand-more", item.key === checked && "expand-more-reverse")}
-            sx={{ fontSize: "0.9rem" }}
+            sx={{ fontSize: "0.9rem", ml: "1rem" }}
             component={TriangleDownSvg}
             inheritViewBox
           ></SvgIcon>
