@@ -63,8 +63,8 @@ const Header = () => {
               transform: "translateX(-50%)",
               zIndex: 1,
             },
-            "@media (min-width: 1920px)": {
-              top: "calc(100vw*0.05 + 6.5rem)",
+            "@media (min-width: 1680px)": {
+              top: "calc(100vw*0.06 + 6.5rem)",
             },
           })}
         >

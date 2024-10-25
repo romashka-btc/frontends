@@ -12,12 +12,12 @@ const ExploreEcosystem = () => {
   const sectionRef = useRef<HTMLDivElement | null>(null)
 
   return (
-    <ScrollExpandedBg anchorEl={sectionRef} fastScrollIn>
-      <Box ref={sectionRef} sx={{ pt: ["0.2rem", "2.2rem"], pb: ["4.8rem", "11.2rem"] }}>
+    <ScrollExpandedBg sx={{ pt: 0 }} anchorEl={sectionRef} fastScrollIn>
+      <Box ref={sectionRef} sx={{ py: ["5.6rem !important", "calc((100vh - 6.5rem) / 4) !important"] }}>
         <Container>
           <SectionHeader
             dark
-            sx={{ mb: ["4rem", "10rem"] }}
+            sx={{ mb: ["4rem", "14rem"] }}
             title="Explore the ecosystem"
             content="We’re part of an ecosystem with a greater purpose – permissionless, flexible, and dedicated to improving the future of Ethereum."
             action={
