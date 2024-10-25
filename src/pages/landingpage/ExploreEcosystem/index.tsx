@@ -13,11 +13,11 @@ const ExploreEcosystem = () => {
 
   return (
     <ScrollExpandedBg sx={{ pt: 0 }} anchorEl={sectionRef} fastScrollIn>
-      <Box ref={sectionRef} sx={{ py: ["5.6rem !important", "calc((100vh - 6.5rem) / 4) !important"] }}>
+      <Box ref={sectionRef} sx={{ py: ["5.6rem !important", "8rem !important", "calc((100vh - 6.5rem - 54rem) / 2) !important"] }}>
         <Container>
           <SectionHeader
             dark
-            sx={{ mb: ["4rem", "14rem"] }}
+            sx={{ mb: ["4rem", "12rem"] }}
             title="Explore the ecosystem"
             content="We’re part of an ecosystem with a greater purpose – permissionless, flexible, and dedicated to improving the future of Ethereum."
             action={

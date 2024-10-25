@@ -52,7 +52,7 @@ const Feature = () => {
   }
 
   return (
-    <SectionWrapper sx={{ py: ["5.6rem !important", "calc((100vh - 6.5rem) / 4) !important"] }}>
+    <SectionWrapper sx={{ py: ["5.6rem !important", "8rem !important", "calc((100vh - 6.5rem - 62.2rem) / 2) !important"] }}>
       <OrientationToView>
         <SectionHeader
           title="Build with Scroll"
