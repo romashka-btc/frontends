@@ -18,10 +18,6 @@ import Logo_14 from "@/assets/images/home/partner_logo_14.svg"
 import Logo_15 from "@/assets/images/home/partner_logo_15.svg"
 import Logo_16 from "@/assets/images/home/partner_logo_16.svg"
 import Logo_17 from "@/assets/images/home/partner_logo_17.svg"
-import { FadeInUp } from "@/components/Animation"
-import Button from "@/components/Button"
-import SectionHeader from "@/components/SectionHeader"
-import SectionWrapper from "@/components/SectionWrapper"
 
 interface Partner {
   id: number
@@ -121,8 +117,6 @@ const PARTNER_LIST = [
 const MarqueeLeft: Partner[] = [].concat(...Array(2).fill(PARTNER_LIST))
 const MarqueeRight: Partner[] = [].concat(...Array(2).fill(PARTNER_LIST)).reverse()
 
-const PartnersContainer = styled(Box)(({ theme }) => ({}))
-
 const MarqueeAnimationLeft = keyframes`
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -141,6 +135,7 @@ const Marquee = styled(Box)(({ theme }) => ({
 
 const CarouselBox = styled(Box)(({ theme }) => ({
   position: "relative",
+  maxWidth: "100vw",
   "@media (min-width:1900px)": {
     "&::before, &::after": {
       content: "''",
@@ -151,11 +146,11 @@ const CarouselBox = styled(Box)(({ theme }) => ({
       zIndex: 42,
     },
     "&::before": {
-      background: "linear-gradient(90deg, #fef8f4 30%, rgba(0, 0, 0, 0) 100%) 0% 0% repeat scroll rgba(0, 0, 0, 0)",
+      background: "linear-gradient(90deg, #101010 30%, rgba(0, 0, 0, 0) 100%) 0% 0% repeat scroll rgba(0, 0, 0, 0)",
       left: 0,
     },
     "&::after": {
-      background: "linear-gradient(270deg, #fef8f4 30%, rgba(0, 0, 0, 0) 100%) 0% 0% repeat scroll rgba(0, 0, 0, 0)",
+      background: "linear-gradient(270deg, #101010 30%, rgba(0, 0, 0, 0) 100%) 0% 0% repeat scroll rgba(0, 0, 0, 0)",
       right: 0,
     },
   },
@@ -189,45 +184,26 @@ const Logo = styled("img")(({ theme }) => ({
   },
 }))
 
-const Carousel = () => (
-  <CarouselBox>
-    <Marquee>
-      <TrackLeft>
-        {MarqueeLeft.map((item, idx) => (
-          <Logo key={idx} src={item.logo} alt={item.alt} />
-        ))}
-      </TrackLeft>
-    </Marquee>
-    <Marquee>
-      <TrackRight>
-        {MarqueeRight.map((item, idx) => (
-          <Logo key={idx} src={item.logo} alt={item.alt} />
-        ))}
-      </TrackRight>
-    </Marquee>
-  </CarouselBox>
-)
-
-const Partners = () => {
+const Carousel = props => {
+  const { sx } = props
   return (
-    <PartnersContainer>
-      <SectionWrapper>
-        <FadeInUp>
-          <SectionHeader
-            sx={{ mb: "10rem" }}
-            title="Build with the best in web3"
-            content="We’re part of an ecosystem with a greater purpose – permissionless, flexible, and dedicated to improving the future of Ethereum."
-            action={
-              <Button href="/ecosystem" color="primary">
-                Explore projects
-              </Button>
-            }
-          ></SectionHeader>
-        </FadeInUp>
-      </SectionWrapper>
-      <Carousel />
-    </PartnersContainer>
+    <CarouselBox sx={sx}>
+      <Marquee>
+        <TrackLeft>
+          {MarqueeLeft.map((item, idx) => (
+            <Logo key={idx} src={item.logo} alt={item.alt} />
+          ))}
+        </TrackLeft>
+      </Marquee>
+      <Marquee>
+        <TrackRight>
+          {MarqueeRight.map((item, idx) => (
+            <Logo key={idx} src={item.logo} alt={item.alt} />
+          ))}
+        </TrackRight>
+      </Marquee>
+    </CarouselBox>
   )
 }
 
-export default Partners
+export default Carousel

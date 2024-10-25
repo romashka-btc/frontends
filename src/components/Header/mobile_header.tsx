@@ -3,7 +3,7 @@ import ReactGA from "react-ga4"
 import { NavLink } from "react-router-dom"
 
 import { ExpandMore } from "@mui/icons-material"
-import { Box, Collapse, List, ListItemButton, Stack, Typography } from "@mui/material"
+import { Box, Collapse, Divider, List, ListItemButton, Stack, Typography } from "@mui/material"
 import { styled } from "@mui/system"
 
 import LanguageSelect from "@/components/LanguageSelect"
@@ -195,12 +195,29 @@ const App = ({ currentMenu }) => {
                       {section.label}
                     </Typography>
                   )}
-                  {section.children
-                    // only show sub items with href
-                    ?.filter(subItem => subItem.href)
-                    .map(subItem => (
-                      <SubmenuLink key={subItem.label} dark={dark} {...subItem}></SubmenuLink>
-                    ))}
+                  {section.type === "grid" ? (
+                    <Stack direction="column" spacing="2rem">
+                      {section.children.map((item, index) => (
+                        <Stack direction="column" spacing="1.6rem">
+                          <Divider textAlign="left" sx={{ color: "text.primary", fontSize: "1.4rem", fontWeight: 700 }}>
+                            {item.label}
+                          </Divider>
+                          {item.items.map(item => (
+                            <SubmenuLink key={item.label} {...item}></SubmenuLink>
+                          ))}
+                        </Stack>
+                      ))}
+                    </Stack>
+                  ) : (
+                    <>
+                      {section.children
+                        // only show sub items with href
+                        ?.filter(subItem => subItem.href)
+                        .map(subItem => (
+                          <SubmenuLink key={subItem.label} dark={dark} {...subItem}></SubmenuLink>
+                        ))}
+                    </>
+                  )}
                 </SectionList>
               ))}
             </List>

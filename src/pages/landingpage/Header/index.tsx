@@ -1,8 +1,8 @@
 import { Box, Container, Stack, Typography } from "@mui/material"
 import { styled } from "@mui/system"
 
-import { FadeInUp } from "@/components/Animation"
 import Button from "@/components/Button"
+import OrientationToView from "@/components/Motion/OrientationToView"
 import useCheckViewport from "@/hooks/useCheckViewport"
 
 const Title = styled(Typography)(({ theme }) => ({
@@ -58,14 +58,17 @@ const Header = () => {
             [theme.breakpoints.down("md")]: { paddingTop: "7.2rem" },
             [theme.breakpoints.up("md")]: {
               position: "absolute",
-              top: ["7.2rem", "7.2rem", "calc(100vw * 0.05 + 6.5rem)"],
+              top: "10rem",
               left: "50%",
               transform: "translateX(-50%)",
               zIndex: 1,
             },
+            "@media (min-width: 1920px)": {
+              top: "calc(100vw*0.05 + 6.5rem)",
+            },
           })}
         >
-          <FadeInUp duration={700} sx={{ display: "flex" }}>
+          <OrientationToView>
             <Stack direction="column" alignItems="center" gap={isMobile ? "2.4rem" : "3.2rem"}>
               <Title data-aos="fade-up">
                 {isMobile ? (
@@ -78,6 +81,9 @@ const Header = () => {
                   </>
                 )}
               </Title>
+              <Typography sx={{ fontSize: ["1.8rem", "2.4rem"], lineHeight: ["2.8rem", "3.6rem"], textAlign: "center", mt: "-1.8rem" }}>
+                Scroll is the leading zero-knowledge rollup.<br></br>Scaling Ethereum for good.{" "}
+              </Typography>
               <ButtonContainer>
                 <Button sx={{ backgroundColor: "#FFF8F3 !important" }} href="/bridge" color="primary">
                   Bridge into Scroll
@@ -87,7 +93,7 @@ const Header = () => {
                 </Button>
               </ButtonContainer>
             </Stack>
-          </FadeInUp>
+          </OrientationToView>
         </Container>
       </Box>
       {!isLandscape && (

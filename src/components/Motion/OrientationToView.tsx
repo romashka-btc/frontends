@@ -1,6 +1,10 @@
 import { motion } from "framer-motion"
 
+import { Box } from "@mui/material"
+
 import useCheckViewport from "@/hooks/useCheckViewport"
+
+const MotionBox = motion(Box)
 
 const OrientationToView = props => {
   const { children, direction = "up", once = true, delay, ...restProps } = props
@@ -49,16 +53,16 @@ const OrientationToView = props => {
     },
   }
   return (
-    <motion.div
+    <MotionBox
       initial="hidden"
       whileInView="show"
       variants={variants[direction]}
-      viewport={{ once, amount: isPortrait ? 0.3 : 1 }}
+      viewport={{ once, amount: isPortrait ? 0.2 : 0.8 }}
       transition={{ ease: [0.16, 1, 0.3, 1], duration: 1, delay }}
       {...restProps}
     >
       {children}
-    </motion.div>
+    </MotionBox>
   )
 }
 
