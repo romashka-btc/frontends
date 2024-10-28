@@ -146,7 +146,7 @@ const mainnetNavigations = [
                 label: "Own your blockspace",
                 text: "Scroll SDK",
                 key: "sdk",
-                href: "https://scroll-sdk.docs.scroll.xyz/en/sdk/",
+                href: "https://docs.scroll.io/en/sdk",
                 isExternal: true,
                 icon: SDKSvg,
               },

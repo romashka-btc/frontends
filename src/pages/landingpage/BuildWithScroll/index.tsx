@@ -17,13 +17,13 @@ const FEATURES = [
     icon: FeatureImage1,
     title: "Deploy an app",
     description: "EVM compatibility enables builders to smoothly deploy their existing application on Scroll using their favorite tools.",
-    href: "https://scroll-sdk.docs.scroll.xyz/en/developers/",
+    href: "https://docs.scroll.io/en/developers",
   },
   {
     icon: FeatureImage2,
     title: "Deploy a chain",
     description: "Scroll SDK makes the process of launching Satellite Chain seamless. Own your blockspace, we’ll take care of the rest.",
-    href: "https://scroll-sdk.docs.scroll.xyz/en/sdk/",
+    href: "https://docs.scroll.io/en/sdk",
   },
 ]
 
