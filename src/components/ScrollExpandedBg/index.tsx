@@ -6,6 +6,8 @@ import { styled } from "@mui/material/styles"
 const Wrapper = styled<any>(Box, { shouldForwardProp: prop => prop !== "bgColor" })(({ theme, bgColor }) => ({
   position: "relative",
   backgroundColor: bgColor ? theme.palette.themeBackground[bgColor] : "transparent",
+  width: "100%",
+  overflow: "hidden",
 }))
 
 const Container = styled(Box)(({ theme }) => ({
@@ -31,7 +33,7 @@ const Background = styled(Box)(({ theme }) => ({
   borderRadius: "40px 40px 0px 0px",
   left: "50%",
   transform: "translateX(-50%)",
-  maxWidth: "100%",
+  // maxWidth: "100%",
 
   // in consideration of the main content width
   [theme.breakpoints.down("xl")]: {

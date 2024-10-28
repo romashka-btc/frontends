@@ -13,7 +13,13 @@ const ExploreEcosystem = () => {
 
   return (
     <ScrollExpandedBg sx={{ pt: 0 }} anchorEl={sectionRef} fastScrollIn>
-      <Box ref={sectionRef} sx={{ py: ["5.6rem !important", "8rem !important", "calc((100vh - 6.5rem - 54rem) / 2) !important"] }}>
+      <Box
+        ref={sectionRef}
+        sx={{
+          pt: ["5.6rem !important", "8rem !important", "calc((100vh - 6.5rem - 54rem) / 2 ) !important"],
+          pb: ["7.2rem !important", "10rem !important", "calc((100vh - 6.5rem - 54rem) / 2 + 5rem) !important"],
+        }}
+      >
         <Container>
           <SectionHeader
             dark
