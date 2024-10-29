@@ -4,13 +4,13 @@ import { Box, Container, Stack, Typography } from "@mui/material"
 
 import { fetchEcosystemMetricsData } from "@/apis/ecosystem"
 import { fetchLastBatchIndexesUrl } from "@/apis/rollupscan"
-import useCheckViewport from "@/hooks/useCheckViewport"
+// import useCheckViewport from "@/hooks/useCheckViewport"
 import { formatLargeNumber } from "@/utils"
 
 import Statistic from "./Statistic"
 
 const Header = () => {
-  const { isLandscape } = useCheckViewport()
+  // const { isLandscape } = useCheckViewport()
   const { data, isLoading } = useSWR(fetchEcosystemMetricsData, () => scrollRequest(fetchEcosystemMetricsData), { refreshInterval: 18e4 })
 
   const { data: totalBatches, isLoading: isBatchesLoading } = useSWR(
@@ -41,7 +41,7 @@ const Header = () => {
         }),
       ]}
     >
-      {isLandscape && (
+      {/* {isLandscape && (
         <Box>
           <video style={{ width: "100vw", objectFit: "cover" }} autoPlay muted loop playsInline preload="none">
             <source src="/videos/ecosystem-header-bg.mp4" type="video/mp4" />
@@ -49,9 +49,11 @@ const Header = () => {
             Not support video
           </video>
         </Box>
-      )}
+      )} */}
 
-      <Container sx={{ position: "absolute", top: ["5.8rem", "5.8rem", "calc(5% + 6.5rem)"], left: "50%", transform: "translateX(-50%)", zIndex: 1 }}>
+      <Container
+        sx={{ position: "absolute", top: ["5.8rem", "5.8rem", "calc(100vw*0.05 + 6.5rem)"], left: "50%", transform: "translateX(-50%)", zIndex: 1 }}
+      >
         <Stack direction="column" alignItems="center">
           <Typography
             sx={{ fontSize: ["3.6rem", "6.4rem"], lineHeight: ["5rem", "8.8rem"], fontWeight: 600, maxWidth: "66rem", textAlign: "center" }}
