@@ -22,7 +22,7 @@ const FEATURES = [
   {
     icon: FeatureImage2,
     title: "Deploy a chain",
-    description: "Scroll SDK makes the process of launching Satellite Chain seamless. Own your blockspace, we’ll take care of the rest.",
+    description: "Scroll SDK makes the process of launching a chain seamless. Own your blockspace, we'll take care of the rest.",
     href: "https://docs.scroll.io/en/sdk",
   },
 ]
