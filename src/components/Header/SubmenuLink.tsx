@@ -95,6 +95,7 @@ const SubmenuLink = ({
   icon,
   dark,
   reload,
+  onClick,
 }: {
   label: string
   text?: string
@@ -103,14 +104,15 @@ const SubmenuLink = ({
   icon?: any
   dark?: boolean
   reload?: boolean
+  onClick?: () => {}
 }) => (
   <>
     {isExternal ? (
-      <StyledLink dark={dark} href={href} target="_blank" rel="noopener noreferrer">
+      <StyledLink dark={dark} href={href} onClick={onClick} target="_blank" rel="noopener noreferrer">
         <SubmenuLinkContent icon={icon} label={label} text={text} isExternal={isExternal} />
       </StyledLink>
     ) : (
-      <StyledNavLink dark={dark} to={href} reloadDocument={reload}>
+      <StyledNavLink dark={dark} to={href} onClick={onClick} reloadDocument={reload}>
         <SubmenuLinkContent icon={icon} label={label} text={text} isExternal={isExternal} />
       </StyledNavLink>
     )}

@@ -1,34 +1,19 @@
-// import { Fade } from "react-awesome-reveal"
-import { Box, Typography } from "@mui/material"
+import { Box, Container, Stack, Typography } from "@mui/material"
 import { styled } from "@mui/system"
 
-import { FadeInUp } from "@/components/Animation"
 import Button from "@/components/Button"
-
-const Container = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  flexDirection: "column",
-  paddingTop: "11rem",
-  paddingBottom: "6.6rem",
-  [theme.breakpoints.down("md")]: {
-    padding: "6.8rem 2rem 10rem",
-  },
-}))
+import OrientationToView from "@/components/Motion/OrientationToView"
+import useCheckViewport from "@/hooks/useCheckViewport"
 
 const Title = styled(Typography)(({ theme }) => ({
-  marginBottom: "2.4rem",
+  fontSize: "6.4rem",
+  lineHeight: "8.8rem",
+  fontWeight: 600,
+  textAlign: "center",
   [theme.breakpoints.down("md")]: {
-    marginBottom: "2rem",
-    textAlign: "center",
-  },
-}))
-
-const SubTitle = styled(Typography)(({ theme }) => ({
-  marginBottom: "4rem",
-  [theme.breakpoints.down("md")]: {
-    marginBottom: "4rem",
+    fontSize: "4rem",
+    lineHeight: "5.6rem",
+    marginBottom: "0.4rem",
   },
 }))
 
@@ -42,26 +27,79 @@ const ButtonContainer = styled(Box)(({ theme }) => ({
 }))
 
 const Header = () => {
+  const { isMobile, isLandscape } = useCheckViewport()
   return (
-    <Container>
-      <FadeInUp duration={700} sx={{ display: "flex" }}>
-        <Title variant="H1" data-aos="fade-up">
-          Ethereum, Extended.
-        </Title>
-
-        <SubTitle variant="Body1" textAlign="center">
-          Scroll is the leading zero-knowledge rollup. Scaling Ethereum for good.
-        </SubTitle>
-        <ButtonContainer>
-          <Button href="/bridge" color="primary">
-            Bridge into Scroll
-          </Button>
-          <Button target="_blank" href="https://docs.scroll.io/en/home/">
-            Start building
-          </Button>
-        </ButtonContainer>
-      </FadeInUp>
-    </Container>
+    <>
+      <Box
+        sx={[
+          {
+            position: "relative",
+          },
+          theme => ({
+            [theme.breakpoints.up("md")]: {
+              background: "url(/imgs/homepage/landing-bg.webp) center / cover no-repeat",
+              aspectRatio: "16 / 9",
+              marginTop: "-6.5rem",
+            },
+          }),
+        ]}
+      >
+        {isLandscape && (
+          <Box>
+            <video style={{ width: "100vw", objectFit: "cover" }} autoPlay muted loop playsInline preload="none">
+              <source src="/videos/home-header-bg.mp4" type="video/mp4" />
+              <source src="/videos/home-header-bg-264.mp4" type="video/mp4" />
+              Not support video
+            </video>
+          </Box>
+        )}
+        <Container
+          sx={theme => ({
+            [theme.breakpoints.down("md")]: { paddingTop: "7.2rem" },
+            [theme.breakpoints.up("md")]: {
+              position: "absolute",
+              top: "10rem",
+              left: "50%",
+              transform: "translateX(-50%)",
+              zIndex: 1,
+            },
+            "@media (min-width: 1680px)": {
+              top: "calc(100vw*0.06 + 6.5rem)",
+            },
+          })}
+        >
+          <OrientationToView>
+            <Stack direction="column" alignItems="center" gap={isMobile ? "2.4rem" : "3.2rem"}>
+              <Title data-aos="fade-up">
+                {isMobile ? (
+                  <>
+                    Homepage of the<br></br> Multichain World
+                  </>
+                ) : (
+                  <>
+                    The Homepage of the<br></br> Multichain World
+                  </>
+                )}
+              </Title>
+              <Typography sx={{ fontSize: ["1.8rem", "2.4rem"], lineHeight: ["2.8rem", "3.6rem"], textAlign: "center", mt: "-1.8rem" }}>
+                Scroll is the leading zero-knowledge rollup.<br></br>Scaling Ethereum for good.{" "}
+              </Typography>
+              <ButtonContainer>
+                <Button sx={{ backgroundColor: "#FFF8F3 !important" }} href="/bridge" color="primary">
+                  Bridge into Scroll
+                </Button>
+                <Button sx={{ backgroundColor: "#FFF8F3 !important" }} target="_blank" href="https://docs.scroll.io/en/home/">
+                  Start building
+                </Button>
+              </ButtonContainer>
+            </Stack>
+          </OrientationToView>
+        </Container>
+      </Box>
+      {!isLandscape && (
+        <Box sx={{ width: "100%", aspectRatio: "909/589", background: "url(/imgs/homepage/landing-bg-mobile.webp) center / cover no-repeat" }}></Box>
+      )}
+    </>
   )
 }
 

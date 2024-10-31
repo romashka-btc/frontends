@@ -116,7 +116,7 @@ const SubMenuList = styled(Box)(({ theme }) => ({
 const SectionList = styled<any>(Box, { shouldForwardProp: prop => prop !== "dark" })(({ theme, dark }) => ({
   display: "flex",
   flexDirection: "column",
-  width: "100%",
+  flex: 1,
   gap: "1.6rem",
   "&:nth-of-type(n+2)": {
     borderLeft: `1px solid ${theme.palette.text.primary}`,
@@ -149,19 +149,44 @@ const App = ({ currentMenu }) => {
     setAnchorEl(null)
   }
 
+  const handleResetIsHover = () => {
+    setIsHover(false)
+  }
+
   const renderSubMenuList = children => {
     return children.map((section, idx) => (
       <SectionList key={idx} dark={dark}>
         {section.label && (
           <Typography sx={{ fontSize: "1.4rem", fontWeight: "bold", lineHeight: "2rem", color: "text.primary" }}>{section.label}</Typography>
         )}
-
-        {section.children
-          // only show sub menu item when the href is set
-          ?.filter(subItem => subItem.href)
-          .map(subItem => (
-            <SubmenuLink key={subItem.label} {...subItem}></SubmenuLink>
-          ))}
+        {section.type === "grid" ? (
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(2, min-content)",
+              gridTemplateRows: "1fr min-content",
+              columnGap: "2.4rem",
+            }}
+          >
+            {section.children.map((item, index) => (
+              <Stack direction="column" spacing="2.4rem" sx={{ gridRow: !index ? "1/3" : "unset", height: "min-content" }}>
+                <Typography sx={{ fontSize: "1.4rem", fontWeight: 700 }}>{item.label}</Typography>
+                {item.items.map(item => (
+                  <SubmenuLink key={item.label} {...item} onClick={handleResetIsHover}></SubmenuLink>
+                ))}
+              </Stack>
+            ))}
+          </Box>
+        ) : (
+          <>
+            {section.children
+              // only show sub menu item when the href is set
+              ?.filter(subItem => subItem.href)
+              .map(subItem => (
+                <SubmenuLink key={subItem.label} {...subItem} onClick={handleResetIsHover}></SubmenuLink>
+              ))}
+          </>
+        )}
       </SectionList>
     ))
   }
@@ -172,7 +197,6 @@ const App = ({ currentMenu }) => {
         <SubMenuButton
           direction="row"
           alignItems="center"
-          // spacing="6px"
           dark={dark}
           className={currentMenu === item.key ? "active" : ""}
           onMouseEnter={e => handleMouseEnter(e, item.key)}
@@ -240,7 +264,16 @@ const App = ({ currentMenu }) => {
   }
 
   return (
-    <StyledBox bgColor={navbarBg} dark={dark} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
+    <StyledBox
+      bgColor={navbarBg}
+      dark={dark}
+      onMouseEnter={() => {
+        setIsHover(true)
+      }}
+      onMouseLeave={e => {
+        setIsHover(false)
+      }}
+    >
       <Announcement />
       <Container>
         <HeaderContainer>

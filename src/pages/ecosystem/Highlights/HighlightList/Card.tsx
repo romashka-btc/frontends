@@ -27,6 +27,11 @@ const BlogTitle = styled(Typography)(({ theme }) => ({
   textAlign: "center",
   verticalAlign: "bottom",
   marginBottom: "0.6rem",
+
+  display: "-webkit-box",
+  WebkitBoxOrient: "vertical",
+  WebkitLineClamp: "2",
+  overflow: "hidden",
 }))
 
 const BlogPoster = styled(WebpImage)(({ theme }) => ({
@@ -65,7 +70,7 @@ const BlogCard = ({ blog }) => {
   return (
     <Card onClick={handleClick}>
       <BlogPoster src={blog.twitter_image || blog.posterImg}></BlogPoster>
-      <BlogTitle>{blog.title}</BlogTitle>
+      <BlogTitle title={blog.title}>{blog.title}</BlogTitle>
       <ReadButton endIcon={<SvgIcon sx={{ fontSize: ["1.2rem !important", "1.4rem !important"] }} component={ArrowSvg} inheritViewBox></SvgIcon>}>
         Read
       </ReadButton>

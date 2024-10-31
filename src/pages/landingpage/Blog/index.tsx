@@ -88,7 +88,7 @@ const useStyles = makeStyles()(theme => ({
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
     gridGap: "3rem",
-    marginTop: "11rem",
+    marginTop: "12.6rem",
     [theme.breakpoints.between("md", "lg")]: {
       gridTemplateColumns: "repeat(2, 1fr)",
       gridTemplateRows: "repeat(4, 1fr)",
@@ -132,7 +132,7 @@ const BuildingStory = () => {
   const { classes, cx } = useStyles()
 
   return (
-    <SectionWrapper sx={{ pt: ["11rem", "18rem", "26rem"], pb: ["12rem", "13rem"] }}>
+    <SectionWrapper sx={{ pt: ["5.6rem", "8rem", "12rem"], pb: ["12rem", "13rem"] }}>
       <SectionHeader
         title="Begin your journey with Scroll"
         content="Learn more about building on Scroll, our latest updates, initiatives, ecosystem additions, and the future of scaling Ethereum."

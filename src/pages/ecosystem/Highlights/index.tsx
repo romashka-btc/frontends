@@ -27,14 +27,26 @@ const Highlights = () => {
   }, [hash])
 
   return (
-    <SectionWrapper id={`${ECOSYSTEM_PAGE_SYMBOL}-highlights`} dark sx={{ pt: ["4rem", "5.5rem", "6rem"], pb: ["5rem"], background: "#101010" }}>
+    <SectionWrapper
+      id={`${ECOSYSTEM_PAGE_SYMBOL}-highlights`}
+      dark
+      sx={{ pt: ["4rem", "5.5rem", "8rem"], pb: ["3rem", "4rem", "6rem"], background: "#101010" }}
+    >
       <Stack
         direction={isMobile ? "column" : "row"}
         justifyContent="space-between"
         alignItems={isMobile ? "flex-start" : "center"}
         gap={isMobile ? "1.6rem" : "2rem"}
       >
-        <Typography sx={{ color: "#fff", fontSize: ["2.4rem", "4.4rem"], lineHeight: ["3.6rem", "5.6rem"], fontWeight: [600, 500], flex: 1 }}>
+        <Typography
+          sx={{
+            color: "#fff",
+            fontSize: ["2.4rem", "4.4rem"],
+            lineHeight: ["3.6rem", "5.6rem"],
+            fontWeight: [600, 500],
+            flex: 1,
+          }}
+        >
           Ecosystem highlights
         </Typography>
         {isMobile ? null : (

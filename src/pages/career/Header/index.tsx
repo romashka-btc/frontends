@@ -9,18 +9,22 @@ import useCheckViewport from "@/hooks/useCheckViewport"
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    marginTop: "-6.5rem",
-    paddingTop: "6.5rem",
+    height: "calc(100vh - 6.5rem)",
     background: theme.palette.themeBackground.normal,
     "& > .MuiBox-root": {
       background: theme.palette.themeBackground.normal,
+    },
+    [theme.breakpoints.down("sm")]: {
+      height: "auto",
     },
   },
   root: {
     display: "grid",
     gridTemplateColumns: "repeat(2, min-content)",
-    rowGap: "2.5rem",
+    rowGap: "2.4rem",
     columnGap: "4rem",
+    // paddingTop: "8.8rem !important",
+    paddingTop: "5% !important",
     paddingBottom: "5.4rem",
     justifyContent: "space-between",
     [theme.breakpoints.down("lg")]: {
@@ -30,13 +34,15 @@ const useStyles = makeStyles()(theme => ({
       paddingBottom: "4rem",
     },
     [theme.breakpoints.down("sm")]: {
-      paddingTop: "7.3rem",
-      paddingBottom: "4rem",
+      paddingTop: "5rem",
+      paddingBottom: "2rem",
       justifyItems: "center",
     },
   },
   titleWrapper: {
-    gridRow: "span 2",
+    [theme.breakpoints.up("sm")]: {
+      gridRow: "span 2",
+    },
   },
   subTitleWrapper: {
     width: "68rem",
@@ -46,8 +52,10 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   actionGroup: {
-    marginTop: "3rem",
-    [theme.breakpoints.between("sm", "lg")]: {},
+    marginTop: "2.4rem",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: 0,
+    },
   },
 }))
 
@@ -75,11 +83,11 @@ const Header = () => {
           <Typography
             sx={{
               fontSize: ["2rem", "2.6rem"],
+              lineHeight: 1.4,
               textAlign: ["center", "left"],
             }}
           >
-            Join our team of diverse and talented researchers, engineers, experts and community champions who are passionate about creating the best
-            L2 Ethereum ecosystem.
+            Join a group of cryptography researchers, engineers, experts, and community champions to create the best L2 Ethereum ecosystem.
           </Typography>
         </OrientationToView>
         <OrientationToView delay={0.3} className={classes.actionGroup}>
@@ -89,13 +97,10 @@ const Header = () => {
         </OrientationToView>
         <Box
           sx={{
-            borderRadius: "4rem 4rem 0 0",
-            height: ["20rem", "37.9rem"],
-            marginTop: "2rem",
-            gridColumn: "1 / -1",
-            width: "100%",
-            background: ["url(/imgs/career/career-bg.svg) center / contain no-repeat", "url(/imgs/career/career-bg.svg) right / contain no-repeat"],
-            backgroundSize: "cover",
+            width: ["100%", "55rem"],
+            aspectRatio: "5 / 4",
+            gridColumn: "-2 / -1",
+            background: "url(/imgs/career/career-header-bg.webp) center / contain no-repeat",
           }}
         ></Box>
       </SectionWrapper>

@@ -195,12 +195,30 @@ const App = ({ currentMenu }) => {
                       {section.label}
                     </Typography>
                   )}
-                  {section.children
-                    // only show sub items with href
-                    ?.filter(subItem => subItem.href)
-                    .map(subItem => (
-                      <SubmenuLink key={subItem.label} dark={dark} {...subItem}></SubmenuLink>
-                    ))}
+                  {section.type === "grid" ? (
+                    <Stack direction="column" spacing="2rem">
+                      {section.children.map((item, index) => (
+                        <Stack direction="column" spacing="1.6rem">
+                          {/* <Divider textAlign="left" sx={{ color: "text.primary",  }}>
+                            {item.label}
+                          </Divider> */}
+                          <Typography sx={{ fontSize: "1.4rem", fontWeight: 700 }}>{item.label}</Typography>
+                          {item.items.map(item => (
+                            <SubmenuLink key={item.label} {...item}></SubmenuLink>
+                          ))}
+                        </Stack>
+                      ))}
+                    </Stack>
+                  ) : (
+                    <>
+                      {section.children
+                        // only show sub items with href
+                        ?.filter(subItem => subItem.href)
+                        .map(subItem => (
+                          <SubmenuLink key={subItem.label} dark={dark} {...subItem}></SubmenuLink>
+                        ))}
+                    </>
+                  )}
                 </SectionList>
               ))}
             </List>
