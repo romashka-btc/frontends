@@ -76,6 +76,9 @@ const useValidateName = value => {
       }
       controller.current = new AbortController()
       const result = await scrollRequest(RPC_URL.L2, {
+        headers: {
+          "Content-Type": "application/json",
+        },
         method: "POST",
         body: JSON.stringify(data),
         signal: controller.current.signal,
