@@ -29,7 +29,7 @@ const Header = () => {
       sx={[
         {
           position: "relative",
-          height: ["42.8rem", "72rem", "auto"],
+          height: ["calc(100vh - 6.2rem)", "72rem", "auto"],
         },
         theme => ({
           [theme.breakpoints.up("md")]: {
@@ -54,10 +54,18 @@ const Header = () => {
       )} */}
 
       <Container
-        sx={{ position: "absolute", top: ["5.8rem", "5.8rem", "calc(100vw*0.05 + 6.5rem)"], left: "50%", transform: "translateX(-50%)", zIndex: 1 }}
+        sx={{
+          position: "absolute",
+          top: ["calc(24% - 5rem)", "5.8rem", "calc(100vw*0.05 + 6.5rem)"],
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 1,
+        }}
       >
-        <Stack direction="column" alignItems="center" gap={["2.4rem", "4rem"]}>
-          <Typography sx={{ fontSize: ["4rem", "6.4rem"], lineHeight: ["5rem", "8.8rem"], fontWeight: 600, maxWidth: "66rem", textAlign: "center" }}>
+        <Stack direction="column" alignItems="center" gap="4rem">
+          <Typography
+            sx={{ fontSize: ["4rem", "6.4rem"], lineHeight: ["5rem", "8.8rem"], fontWeight: 600, maxWidth: ["30rem", "unset"], textAlign: "center" }}
+          >
             Ecosystem projects
           </Typography>
           <Stack
