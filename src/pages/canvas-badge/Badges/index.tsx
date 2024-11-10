@@ -116,7 +116,7 @@ const Badges = () => {
   }
 
   return (
-    <SectionWrapper dark sx={{ pt: ["2.2rem", "10.2rem"], pb: ["2.2rem", "12rem"] }}>
+    <SectionWrapper dark sx={{ pt: ["1.4rem", "3rem"], pb: ["2.2rem", "12rem"] }}>
       <div id={`${CANVAS_AND_BADGES_PAGE_SYMBOL}-discover`}></div>
       <Box className={classes.grid}>
         <Typography
