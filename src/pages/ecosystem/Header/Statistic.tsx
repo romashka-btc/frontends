@@ -31,6 +31,7 @@ const Statistic = props => {
           lineHeight: ["2rem", "2.8rem"],
           fontWeight: 600,
           textAlign: "center",
+          whiteSpace: ["pre-wrap", "pre-wrap", "nowrap"],
           [theme.breakpoints.down("md")]: {
             flex: 1,
             display: "inline-flex",

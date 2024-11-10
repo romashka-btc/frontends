@@ -56,7 +56,7 @@ const Header = () => {
       <Container
         sx={{ position: "absolute", top: ["5.8rem", "5.8rem", "calc(100vw*0.05 + 6.5rem)"], left: "50%", transform: "translateX(-50%)", zIndex: 1 }}
       >
-        <Stack direction="column" alignItems="center" gap={["2.4rem", "3.2rem"]}>
+        <Stack direction="column" alignItems="center" gap={["2.4rem", "4rem"]}>
           <Typography sx={{ fontSize: ["4rem", "6.4rem"], lineHeight: ["5rem", "8.8rem"], fontWeight: 600, maxWidth: "66rem", textAlign: "center" }}>
             Ecosystem projects
           </Typography>
@@ -68,13 +68,13 @@ const Header = () => {
             }}
           >
             <Statistic label={isPortrait ? "TVL" : "Total value locked"} loading={isLoading}>
-              {data?.tvl}
+              {data?.tvl ?? "--"}
             </Statistic>
             <Statistic label="Transaction count" loading={isLoading}>
-              {data?.txAll}
+              {data?.txAll ?? "--"}
             </Statistic>
             <Statistic label="Batches settled to L1" loading={isBatchesLoading}>
-              {totalBatches}
+              {totalBatches ?? "--"}
             </Statistic>
           </Stack>
           <Button
