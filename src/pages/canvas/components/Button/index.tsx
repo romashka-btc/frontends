@@ -4,9 +4,9 @@ import { ButtonProps, CircularProgress, Button as ScrollButton } from "@mui/mate
 
 import useCheckViewport from "@/hooks/useCheckViewport"
 
-interface ScrollButtonProps extends ButtonProps {
+interface ScrollButtonProps extends Omit<ButtonProps, "color"> {
   width?: string | number
-  color?: "primary" | "secondary" | "tertiary"
+  color?: "primary" | "secondary" | "tertiary" | "white"
   gloomy?: boolean
   loading?: boolean
   disabled?: boolean
@@ -26,6 +26,8 @@ const backgroundColor = (color, theme) => {
       return "#262626"
     case "tertiary":
       return "transparent"
+    case "white":
+      return "#ffffff"
     default:
       return theme.palette.text.primary
   }
@@ -39,6 +41,8 @@ const cColor = (color, theme) => {
       return "#ffffff"
     case "tertiary":
       return "#ffffff"
+    case "white":
+      return theme.palette.text.primary
     default:
       return theme.palette.primary.contrastText
   }
@@ -51,6 +55,8 @@ const borderColor = (color, theme) => {
     case "secondary":
       return "#262626"
     case "tertiary":
+      return "#ffffff"
+    case "white":
       return "#ffffff"
     default:
       return theme.palette.primary.contrastText
