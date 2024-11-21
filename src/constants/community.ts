@@ -37,6 +37,7 @@ export const COMMUNITY_REGION_LIST = [
   "Europe",
   "Middle East",
   "North America",
+  "Online",
   "Pacific",
   "South America",
 ]
