@@ -37,8 +37,29 @@ const useStyles = makeStyles()(theme => ({
   },
 }))
 
+const DateTag = props => {
+  const { startDate, endDate } = props
+  return (
+    <Typography
+      sx={{
+        fontSize: ["1.4rem", "1.6rem"],
+        fontWeight: 600,
+        lineHeight: ["2"],
+        cursor: "inherit",
+        borderRadius: "1.5rem",
+        background: "#FFEEDA",
+        padding: "0rem 1.2rem",
+      }}
+    >
+      <SvgIcon sx={{ fontSize: ["1.6rem"], marginRight: ["0.6rem"] }} component={TimeIcon} inheritViewBox></SvgIcon>
+      {!endDate && dayjs(startDate).format("MMMM D, YYYY")}
+      {endDate && `${dayjs(startDate).format("MMM D")} - ${dayjs(endDate).format("MMM D, YYYY")}`}
+    </Typography>
+  )
+}
+
 const EventCard = props => {
-  const { image, city, country, url, date, ...restProps } = props
+  const { image, city, country, url, ...restProps } = props
 
   const { classes } = useStyles()
 
@@ -47,20 +68,7 @@ const EventCard = props => {
       <Card {...restProps} elevation={0} classes={{ root: classes.card }}>
         <img alt="Event cover" src={communityOrigin + image} className={classes.cover} />
         <Stack direction="row" gap="1rem">
-          <Typography
-            sx={{
-              fontSize: ["1.4rem", "1.6rem"],
-              fontWeight: 600,
-              lineHeight: ["2"],
-              cursor: "inherit",
-              borderRadius: "1.5rem",
-              background: "#FFEEDA",
-              padding: "0rem 1.2rem",
-            }}
-          >
-            <SvgIcon sx={{ fontSize: ["1.6rem"], marginRight: ["0.6rem"] }} component={TimeIcon} inheritViewBox></SvgIcon>
-            {dayjs(date).format("MMMM D, YYYY")}
-          </Typography>
+          <DateTag {...props} />
           <Typography
             sx={{
               fontSize: ["1.4rem", "1.6rem"],
