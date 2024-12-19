@@ -562,7 +562,7 @@
         "type": "address"
       }
     ],
-    "name": "initalize",
+    "name": "initialize",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
