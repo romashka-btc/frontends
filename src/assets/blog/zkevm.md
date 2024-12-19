@@ -31,7 +31,7 @@ Although zk-Rollup is secure and efficient, its applications are still limited t
 In a nutshell, zk-Rollup is developer-unfriendly and has limited functionality for now.
 That’s the biggest problem we want to tackle. We want to provide the best developer experience and support composability within Layer 2 by supporting native EVM verification directly, so that existing Ethereum applications can simply migrate over onto the zk-Rollup as is.
 
-<!-- This brings us huge advantage to be compatible all with exsiting Ethereum infrastructures without any modification! -->
+<!-- This brings us huge advantage to be compatible all with existing Ethereum infrastructures without any modification! -->
 
 ## Build general DApps in zk-Rollup
 
